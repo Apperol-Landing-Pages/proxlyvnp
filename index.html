@@ -203,13 +203,27 @@
                         <p>Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
                     </div>
 
-                    <form class="contact-form">
-                        <input class="field" type="text" name="name" placeholder="Name" autocomplete="name">
-                        <input class="field" type="email" name="email" placeholder="Email" autocomplete="email">
-                        <input class="field" type="text" name="subject" placeholder="Subject">
-                        <textarea class="field field-message" name="message" placeholder="How can we help?"></textarea>
-                        <button class="btn btn-primary contact-submit" type="button">Send Message</button>
-                    </form>
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="5f801a65-2f52-41ad-992b-20823260f8d9">
+
+  <input class="field" type="text" name="name" placeholder="Name" autocomplete="name" required>
+  <input class="field" type="email" name="email" placeholder="Email" autocomplete="email" required>
+  <input class="field" type="text" name="subject" placeholder="Subject" required>
+  <textarea class="field field-message" name="message" placeholder="How can we help?" required></textarea>
+
+  <button class="btn btn-primary contact-submit" type="submit">Send Message</button>
+</form>
+
+                    <div class="form-modal" id="formModal" aria-hidden="true">
+  <div class="form-modal__overlay"></div>
+
+  <div class="form-modal__card" role="dialog" aria-modal="true">
+    <div class="form-modal__icon" id="formModalIcon">✓</div>
+    <h3 id="formModalTitle">Message sent</h3>
+    <p id="formModalText">Thank you! We’ll get back to you soon.</p>
+    <button class="btn btn-primary" id="formModalClose" type="button">Okay</button>
+  </div>
+</div>
                 </div>
             </section>
         </main>
