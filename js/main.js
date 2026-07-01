@@ -146,3 +146,31 @@ document.addEventListener("keydown", (event) => {
         closeFormModal();
     }
 });
+
+const cookieConsent = document.getElementById("cookieConsent");
+const cookieAccept = document.getElementById("cookieAccept");
+const cookieReject = document.getElementById("cookieReject");
+const cookieConsentKey = "proxlyCookieConsent";
+
+function hideCookieConsent(choice) {
+    if (!cookieConsent) return;
+
+    localStorage.setItem(cookieConsentKey, choice);
+    cookieConsent.classList.remove("is-active");
+    cookieConsent.setAttribute("aria-hidden", "true");
+}
+
+if (cookieConsent && !localStorage.getItem(cookieConsentKey)) {
+    window.setTimeout(() => {
+        cookieConsent.classList.add("is-active");
+        cookieConsent.setAttribute("aria-hidden", "false");
+    }, 700);
+}
+
+if (cookieAccept) {
+    cookieAccept.addEventListener("click", () => hideCookieConsent("accepted"));
+}
+
+if (cookieReject) {
+    cookieReject.addEventListener("click", () => hideCookieConsent("essential"));
+}
